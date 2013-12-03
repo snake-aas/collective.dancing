@@ -7,6 +7,10 @@ import stoneagehtml
 import z3c.form.interfaces
 from zope.interface import noLongerProvides
 import zope.schema.vocabulary
+try:
+    from zope.app.component.hooks import getSite
+except ImportError:
+    from zope.component.hooks import getSite
 
 import collective.singing.async
 
@@ -18,7 +22,7 @@ def get_queue():
     return collective.singing.async.get_queue('collective.dancing.jobs')
 
 def get_request_container():
-    site = zope.app.component.hooks.getSite()
+    site = getSite()
     return site.aq_chain[-1]
 
 def fix_request(wrapped, skip=1):
