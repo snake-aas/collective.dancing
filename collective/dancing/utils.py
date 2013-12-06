@@ -7,6 +7,8 @@ import stoneagehtml
 import z3c.form.interfaces
 from zope.interface import noLongerProvides
 import zope.schema.vocabulary
+
+# dep to zope.app.component was dropped in Plone 4.3
 try:
     from zope.app.component.hooks import getSite
 except ImportError:
